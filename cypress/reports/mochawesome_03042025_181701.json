@@ -1,0 +1,189 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-04T15:13:31.073Z",
+    "end": "2025-03-04T15:17:01.067Z",
+    "duration": 209994,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "07f89ff8-06c7-4c17-b331-18d636d33722",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login\\login.cy.js",
+      "file": "cypress\\e2e\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "45631e8a-df9d-47e7-9311-9f79823bb742",
+          "title": "Login Module",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TC_Login_01: Verify successful login",
+              "fullTitle": "Login Module TC_Login_01: Verify successful login",
+              "timedOut": null,
+              "duration": 32045,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test steps and assertions for a successful login\nLoginPage.login(Cypress.env('validUsername'), Cypress.env('validPassword'));\nLoginPage.verifyLogin();",
+              "err": {},
+              "uuid": "8ab5a9ab-f184-4ccc-8ea8-9d97b23949c5",
+              "parentUUID": "45631e8a-df9d-47e7-9311-9f79823bb742",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_Login_02: Verify login with invalid password",
+              "fullTitle": "Login Module TC_Login_02: Verify login with invalid password",
+              "timedOut": null,
+              "duration": 21493,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test steps and assertions for invalid password handling\nLoginPage.login(Cypress.env('validUsername'), Cypress.env('invalidPassword'));\nLoginPage.verifyErrorMessage('Invalid credentials');",
+              "err": {},
+              "uuid": "e048cc6e-7191-44eb-9cb8-ab15b53e7b84",
+              "parentUUID": "45631e8a-df9d-47e7-9311-9f79823bb742",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_Login_03: Verify login with empty fields",
+              "fullTitle": "Login Module TC_Login_03: Verify login with empty fields",
+              "timedOut": null,
+              "duration": 5093,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test steps and assertions for empty fields validation\nLoginPage.getLoginBtn().click();\nLoginPage.verifyMandatoryFieldValidation();",
+              "err": {},
+              "uuid": "c003a191-5e27-418f-bc33-14c54547981f",
+              "parentUUID": "45631e8a-df9d-47e7-9311-9f79823bb742",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_Login_04: Verify account lock after failed attempts",
+              "fullTitle": "Login Module TC_Login_04: Verify account lock after failed attempts",
+              "timedOut": null,
+              "duration": 10425,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Test steps and assertions for account lock after multiple failed attempts\nfor (let i = 0; i < 15; i++) {\n  LoginPage.login(Cypress.env('validUsername'), Cypress.env('invalidPassword'));\n  LoginPage.verifyErrorMessage();\n}\n// Check for account lock message\nLoginPage.verifyAccountLock();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<p.oxd-text.oxd-text--p.oxd-alert-content-text>' to contain undefined",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<p.oxd-text.oxd-text--p.oxd-alert-content-text>' to contain undefined\n    at loginPage.verifyErrorMessage (webpack:///./cypress/page/LoginPage.js:25:31)\n    at Context.eval (webpack:///./cypress/e2e/login/login.cy.js:34:22)",
+                "diff": null
+              },
+              "uuid": "57386a86-140d-4b1b-9ed8-0dd46d25353f",
+              "parentUUID": "45631e8a-df9d-47e7-9311-9f79823bb742",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC_Login_05: Verify password field encryption",
+              "fullTitle": "Login Module TC_Login_05: Verify password field encryption",
+              "timedOut": null,
+              "duration": 4032,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test steps and assertions to ensure the password field is encrypted\nLoginPage.getPasswordField().type('somepassword');\nLoginPage.verifyPasswordFieldEncryption();",
+              "err": {},
+              "uuid": "7e73595f-3d7d-431f-9e0a-42455282f9fb",
+              "parentUUID": "45631e8a-df9d-47e7-9311-9f79823bb742",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8ab5a9ab-f184-4ccc-8ea8-9d97b23949c5",
+            "e048cc6e-7191-44eb-9cb8-ab15b53e7b84",
+            "c003a191-5e27-418f-bc33-14c54547981f",
+            "7e73595f-3d7d-431f-9e0a-42455282f9fb"
+          ],
+          "failures": [
+            "57386a86-140d-4b1b-9ed8-0dd46d25353f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 73088,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "charts": true,
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss",
+        "embeddedScreenshots": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

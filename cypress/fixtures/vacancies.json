@@ -1,0 +1,79 @@
+{
+    "new_vacancies": {
+        "name": "DevOps Engineers",
+        "job_title": "IT Manager",
+        "hiring_manager": "Rahul Das",
+        "no_of_positions": 3,
+        "description": "We are looking for an IT Manager to lead our technical team. The ideal candidate should have experience in overseeing IT infrastructure, software development, and managing teams. Proficiency in React, Node.js, and MongoDB is a plus."
+    },
+    "fields": [
+        {
+            "name": "",
+            "jobTitle": "",
+            "hiringManager": "",
+            "expectedErrors": [
+                { "text": "Required", "count": 3 }
+            ]
+        },
+        {
+            "name": "",
+            "jobTitle": "Content Specialist",
+            "hiringManager": "Rahul  Das",
+            "expectedErrors": [
+                { "text": "Required", "count": 1 }
+            ]
+        },
+        {
+            "name": "Software Engineer",
+            "jobTitle": "",
+            "hiringManager": "Rahul  Das",
+            "expectedErrors": [
+                { "text": "Required", "count": 2 }
+            ]
+        },
+        {
+            "name": "",
+            "jobTitle": "",
+            "hiringManager": "Rahul  Das",
+            "expectedErrors": [
+                { "text": "Required", "count": 2 }
+            ]
+        },
+        {
+            "name": "Software Engineer",
+            "jobTitle": "Database Administrator",
+            "hiringManager": "",
+            "expectedErrors": [
+                { "text": "Required", "count": 2 }
+            ]
+        },
+        
+        {
+            "name": "",
+            "jobTitle": "Head of Support",
+            "hiringManager": "",
+            "expectedErrors": [
+                { "text": "Required", "count": 2 }
+            ]
+        },
+        {
+            "name": "Software Engineer",
+            "jobTitle": "",
+            "hiringManager": "",
+            "expectedErrors": [
+                { "text": "Required", "count": 3 }
+            ]
+        }
+    ],
+    
+    "search_criteria": [
+          {
+            "vacancyName": "Software Engineer",
+            "jobTitle": "",
+            "hiringManager": "",
+            "status": "Active",
+            "expectedResults": ["DevOps Engineers", "IT Manager", "Rahul Das", "3", "Active"]
+          }
+        ]
+        
+}

@@ -2,11 +2,11 @@ import loginPage from './LoginPage'
 const LoginPage = new loginPage()
 
 class RecruitmentPage {
-   
+
     constructor() {
         this.tableCard = '.oxd-table-card';
         this.eyeIcon = '.oxd-table-cell-actions > :nth-child(1) > .oxd-icon';
-        this.deleteIcon='.oxd-table-cell-actions > :nth-child(2) > .oxd-icon'
+        this.deleteIcon = '.oxd-table-cell-actions > :nth-child(2) > .oxd-icon'
         this.switchInput = '.oxd-switch-input';
         this.firstNameField = '.--name-grouped-field > :nth-child(1) > :nth-child(2) > .oxd-input';
         this.saveButton = '.oxd-form-actions > .oxd-button';
@@ -14,7 +14,6 @@ class RecruitmentPage {
 
     //*locators
     getAddCandidateButton() { return cy.get('.orangehrm-header-container > .oxd-button'); }
-    getRecruitmentModule() { return cy.get('#recruitmentModule'); }
     getFirstNameField() { return cy.get('.--name-grouped-field > :nth-child(1) > :nth-child(2) > .oxd-input'); }
     getMiddleNameField() { return cy.get(':nth-child(2) > :nth-child(2) > .oxd-input'); }
     getLastNameField() { return cy.get(':nth-child(3) > :nth-child(2) > .oxd-input'); }
@@ -27,16 +26,14 @@ class RecruitmentPage {
     getSearchFieldByName() { return cy.get('.oxd-autocomplete-text-input > input') }
     getSearchButton() { return cy.get('.oxd-form-actions > .oxd-button--secondary'); }
     getCandidateStatusDropdownBtn() { return cy.get(':nth-child(4) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text'); }
-    getStatusDropDown(){ return cy.get('.oxd-select-dropdown') }
+    getStatusDropDown() { return cy.get('.oxd-select-dropdown') }
     getConfirmationMessage() { return cy.get('.oxd-form > .oxd-text--h6'); }
-    getDeleteButton() { return cy.get('#deleteButton'); }
-    getUpdatedCandidateName() { return cy.get('.candidate-name'); }
 
 
-    gotoRecruitementPage(){
+    gotoRecruitementPage() {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-        LoginPage.login('Admin','admin123')
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index'); 
+        LoginPage.login('Admin', 'admin123')
+        // cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index'); 
         cy.get(':nth-child(5) > .oxd-main-menu-item').click()
     }
 
@@ -89,42 +86,28 @@ class RecruitmentPage {
         });
     }
 
-    
 
     updateCandidateDetails(firstName) {
         cy.get(this.switchInput).click();
         cy.get(this.firstNameField).clear().type(firstName);
         cy.get(this.saveButton).click();
     }
-    
+
     verifySuccessAlert(expectedMessage) {
         cy.get('.oxd-toast', { timeout: 3000 }) // Wait up to 5 seconds if needed
-        .should('exist') // Ensure the toast appears
+            .should('exist') // Ensure the toast appears
         // .and('contain', expectedMessage); // Assert its content
 
         cy.on('window:alert', (alert) => {
             expect(alert).to.equal(expectedMessage);
-            cy.get('.oxd-toast').should('contain',expectedMessage)
+            cy.get('.oxd-toast').should('contain', expectedMessage)
         });
 
-    }
-    
-
-    deleteCandidate(candidateName) {
-        this.getCandidateByName(candidateName).click();
-        this.getDeleteButton().click();
-        cy.get('#confirmDeleteButton').click();
-    }
-
-    verifyCandidateDeleted() {
-        this.getConfirmationMessage().should('contain', 'Candidate deleted successfully');
     }
 
     getCandidateByName(name) {
         return cy.contains(name);
     }
-
-
 
     // Method to get the current number of records
     getRecordCount() {
@@ -132,22 +115,6 @@ class RecruitmentPage {
             return parseInt(text.match(/\d+/)[0]); // Extract the number from the text
         });
     }
-
-    // clickRandomCandidateDeleteIcon() {
-    //     cy.get(this.tableCard).then(($cards) => {
-    //         const count = $cards.length;
-    //         if (count === 0) {
-    //             cy.log('No candidates found!');
-    //             return;
-    //         }
-    //         const randomIndex = Math.floor(Math.random() * count);
-    //         cy.get(this.tableCard)
-    //             .eq(randomIndex)
-    //             .find(this.deleteIcon)
-    //             .click();
-    //     });
-    // }
-
 
     clickRandomCandidateDeleteIcon() {
         cy.get('.oxd-table-card').then(($cards) => {
@@ -167,7 +134,6 @@ class RecruitmentPage {
             return parseInt(updatedText.match(/\d+/)[0]); // Extract the new number of records
         });
     }
-
 
 }
 
