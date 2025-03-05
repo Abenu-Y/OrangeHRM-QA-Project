@@ -33,14 +33,43 @@
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
+# name: Cypress Tests
+# on: [push]
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v6
+#         with:
+#           record: true
+#           parallel: true
+#         env:
+#           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
 name: Cypress Tests
 on: [push]
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensures full Git history is available for Cypress
+
+      - name: Set Git Information
+        run: |
+          echo "CYPRESS_GIT_INFO_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "CYPRESS_GIT_INFO_BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+          echo "CYPRESS_GIT_INFO_REMOTE=$(git config --get remote.origin.url)" >> $GITHUB_ENV
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -49,3 +78,6 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_GIT_INFO_SHA: ${{ env.CYPRESS_GIT_INFO_SHA }}
+          CYPRESS_GIT_INFO_BRANCH: ${{ env.CYPRESS_GIT_INFO_BRANCH }}
+          CYPRESS_GIT_INFO_REMOTE: ${{ env.CYPRESS_GIT_INFO_REMOTE }}
