@@ -2,7 +2,7 @@
     "new_vacancies": {
         "name": "DevOps Engineers",
         "job_title": "IT Manager",
-        "hiring_manager": "Rahul Das",
+        "hiring_manager": "Rahul Patil",
         "no_of_positions": 3,
         "description": "We are looking for an IT Manager to lead our technical team. The ideal candidate should have experience in overseeing IT infrastructure, software development, and managing teams. Proficiency in React, Node.js, and MongoDB is a plus."
     },
@@ -68,7 +68,7 @@
     
     "search_criteria": [
           {
-            "vacancyName": "Software Engineer",
+            "vacancyName": "DevOps Engineers",
             "jobTitle": "",
             "hiringManager": "",
             "status": "Active",

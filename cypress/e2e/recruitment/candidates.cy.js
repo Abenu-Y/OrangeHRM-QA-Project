@@ -48,7 +48,7 @@ describe('Recruitment Module', () => {
         recruitmentCandidatePage.verifySuccessAlert('Succesfully Updated');
     });
 
-    it.only('TC_Rec_06: Verify deleting a candidate', () => {
+    it('TC_Rec_06: Verify deleting a candidate', () => {
         recruitmentCandidatePage.getRecordCount().then((initialCount) => {
             recruitmentCandidatePage.clickRandomCandidateDeleteIcon();
             recruitmentCandidatePage.confirmDelete();
