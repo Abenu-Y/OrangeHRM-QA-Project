@@ -14,6 +14,7 @@ class RecruitmentPage {
 
     //*locators
     getAddCandidateButton() { return cy.get('.orangehrm-header-container > .oxd-button'); }
+
     getFirstNameField() { return cy.get('.--name-grouped-field > :nth-child(1) > :nth-child(2) > .oxd-input'); }
     getMiddleNameField() { return cy.get(':nth-child(2) > :nth-child(2) > .oxd-input'); }
     getLastNameField() { return cy.get(':nth-child(3) > :nth-child(2) > .oxd-input'); }
@@ -22,6 +23,8 @@ class RecruitmentPage {
     getKeyWordsField() { return cy.get('.orangehrm-save-candidate-page-full-width > .oxd-input-group > :nth-child(2) > .oxd-input'); }
     getCheckBox() { return cy.get('input[type="checkbox"]'); }
     getSaveButton() { return cy.get('.oxd-button--secondary'); }
+
+    
     getErrorMessage() { return cy.get('.error-message'); }
     getSearchFieldByName() { return cy.get('.oxd-autocomplete-text-input > input') }
     getSearchButton() { return cy.get('.oxd-form-actions > .oxd-button--secondary'); }

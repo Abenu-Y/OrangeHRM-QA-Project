@@ -27,13 +27,11 @@ describe('Recruitment Module', () => {
     it('TC_Rec_02: Verify mandatory field validation', () => {
         recruitmentCandidatePage.getAddCandidateButton().click();
         recruitmentCandidatePage.getSaveButton().click();
-        recruitmentCandidatePage.verifyMandatoryFieldValidation(); // Verify that "Full Name" field is required
+        recruitmentCandidatePage.verifyMandatoryFieldValidation();
     });
 
     it('TC_Rec_03: Verify searching for a candidate by name', () => {
         recruitmentCandidatePage.searchCandidateByName('Kebede');
-        cy.get('.oxd-autocomplete-text-input--after')
-        cy.get('.oxd-autocomplete-text-input--before')
         cy.contains('John Doe').should('be.visible'); // Ensure the candidate is found
     });
 

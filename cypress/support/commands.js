@@ -34,3 +34,8 @@ Cypress.Commands.add('login', (username, password) => {
     cy.get('input[name="password"]').type(password); 
     cy.get('.oxd-button').click(); 
   });
+
+  // Cypress.on('uncaught:exception', (err, runnable) => {
+  //   // returning false prevents Cypress from failing the test
+  //   return false;
+  // });

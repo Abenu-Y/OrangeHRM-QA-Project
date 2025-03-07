@@ -1,6 +1,5 @@
 class loginPage {
 
-
     //* locators
     getUserNameField() { return cy.get('input[name="username"]') }
     getPasswordField() { return cy.get('input[name="password"]') }
@@ -10,7 +9,7 @@ class loginPage {
     //? actions
     login(username, password) {
         this.getUserNameField().type(username);
-        this.getPasswordField().type(password);
+        this.getPasswordField().type(password,{ log:false });
         this.getLoginBtn().click();
     }
 

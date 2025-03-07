@@ -10,7 +10,7 @@ describe('Vacancy Management', () => {
 
   beforeEach(() => {
     VacanciesPage.gotoRecruitmentPageandVacanciesTab()
-    cy.fixture('vacancies').as('vacancyData');
+    // cy.fixture('vacancies').as('vacancyData');
   });
 
 
@@ -51,4 +51,11 @@ describe('Vacancy Management', () => {
       });
     });
   });
+
+  afterEach(() => {
+    // Runs after each test (e.g., take screenshots for failed tests)
+    if (Cypress.currentTest.state === 'failed') {
+        cy.screenshot();
+    }
+});
 });

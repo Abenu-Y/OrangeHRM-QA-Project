@@ -2,6 +2,15 @@ import loginPage from '../../page/LoginPage';
 
 describe('Login Module', () => {
     const LoginPage = new loginPage();
+    let validUsername, validPassword, invalidPassword;
+
+    before(() => {
+        // Load environment variables once and store them in variables
+        cy.log('Loading environment variables once...');
+        validUsername = Cypress.env('validUsername');
+        validPassword = Cypress.env('validPassword');
+        invalidPassword = Cypress.env('invalidPassword');
+    });
 
     beforeEach(() => {
         // Navigate to the login page, etc.
@@ -10,13 +19,13 @@ describe('Login Module', () => {
 
     it('TC_Login_01: Verify successful login', () => {
         // Test steps and assertions for a successful login
-        LoginPage.login(Cypress.env('validUsername'), Cypress.env('validPassword'))
+        LoginPage.login(validUsername, validPassword)
         LoginPage.verifyLogin()
     });
 
     it('TC_Login_02: Verify login with invalid password', () => {
         // Test steps and assertions for invalid password handling
-        LoginPage.login(Cypress.env('validUsername'), Cypress.env('invalidPassword'))
+        LoginPage.login(validUsername, invalidPassword)
         LoginPage.verifyErrorMessage('Invalid credentials')
 
     });
@@ -30,7 +39,7 @@ describe('Login Module', () => {
     it('TC_Login_04: Verify account lock after failed attempts', () => {
         // Test steps and assertions for account lock after multiple failed attempts
         for (let i = 0; i < 15; i++) {
-            LoginPage.login(Cypress.env('validUsername'), Cypress.env('invalidPassword'))
+            LoginPage.login(validUsername, invalidPassword)
             LoginPage.verifyErrorMessage('Invalid credentials')
         }
 
