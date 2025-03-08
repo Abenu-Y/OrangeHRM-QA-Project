@@ -31,7 +31,7 @@ describe('Recruitment Module', () => {
     });
 
     it('TC_Rec_03: Verify searching for a candidate by name', () => {
-        recruitmentCandidatePage.searchCandidateByName('Kebede');
+        recruitmentCandidatePage.searchCandidateByName('John Doe');
         cy.contains('John Doe').should('be.visible'); // Ensure the candidate is found
     });
 
