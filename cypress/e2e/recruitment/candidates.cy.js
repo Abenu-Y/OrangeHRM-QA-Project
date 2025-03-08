@@ -3,16 +3,26 @@ import RecruitmentCandidatePage from '../../page/CandidatePage';
 describe('Recruitment Module', () => {
     const recruitmentCandidatePage = new RecruitmentCandidatePage();
 
+    before(() => {
+        cy.fixture('candidatesData').as('data');
+      })
+
     beforeEach(() => {
         recruitmentCandidatePage.gotoRecruitementPage();
     });
 
     it('TC_Rec_01: Verify adding a new candidate', () => {
         const filePath = 'plan.pdf';
+       
+        cy.get('@data').then(({ new_candidates }) => {
+           
+            const { name , middle_name , last_name , email , contact} = new_candidates;
+            recruitmentCandidatePage.addCandidate(name , middle_name , last_name , email , contact)
+            //? verify
+            recruitmentCandidatePage.verifyCandidateAdded()
+          });
 
-        recruitmentCandidatePage.addCandidate('Abebe', 'Beso', 'Bela', 'abe.beso@gmail.com', 555 - 555 - 5555)
-        //? verify
-        recruitmentCandidatePage.verifyCandidateAdded()
+       
 
         // // Select job title
         // // cy.get('.oxd-select-text-input').click();
